@@ -1,4 +1,4 @@
-const { Client } = require('pg')
+const { Client } = require('pg').native
 
 export default () => {
     return new Client({
