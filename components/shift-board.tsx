@@ -1,8 +1,8 @@
-import { useSelector, shallowEqual } from 'react-redux'
+import { useSelector, shallowEqual, RootStateOrAny } from 'react-redux'
 import DayShiftCard from './day-shift-card'
 const Shifts = () => {
     return useSelector(
-        (state) => ({
+        (state : RootStateOrAny) => ({
             dayshift: state.shifts
         }),
         shallowEqual

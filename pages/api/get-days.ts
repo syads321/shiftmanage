@@ -32,7 +32,7 @@ export default async function handler(
         });
         client.end()
         res.status(200).json({ success: true, data: data })
-    } catch (e) {
+    } catch (e : any) {
         res.status(200).json({ success: false, message: e.message })
     }
 }

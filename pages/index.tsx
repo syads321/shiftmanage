@@ -1,22 +1,13 @@
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
-import { useState } from 'react'
 import DayShift from '../interfaces/day-shift'
 import FetchtPost from '../helpers/fetchPost'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import ShiftBoard from '../components/shift-board'
 import { Button } from 'semantic-ui-react'
 import AddDayModal from '../components/add-day-modal'
 import EditShiftModal from '../components/edit-shift-modal'
-const Shifts = () => {
-  return useSelector(
-    (state) => ({
-      dayshift: state.shifts
-    }),
-    shallowEqual
-  )
-}
-const Home = ({ resp }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Home = ({ resp }: InferGetStaticPropsType<typeof getServerSideProps>) => {
   let list: Array<DayShift> = [];
   list = [...list, ...resp.data]
   const dispatch = useDispatch()
@@ -53,11 +44,14 @@ const Home = ({ resp }: InferGetStaticPropsType<typeof getStaticProps>) => {
 
 export default Home
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const res = await FetchtPost(process.env.API_HOST + 'api/get-days', {})
   const resp = await res.json()
+  // const resp = {
+  //   data: []
+  // }
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {

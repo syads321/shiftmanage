@@ -1,6 +1,6 @@
 import React, { useRef, SyntheticEvent, useState, SetStateAction } from 'react'
 import { Button, Modal, Form } from 'semantic-ui-react'
-import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+import { useSelector, shallowEqual, useDispatch, RootStateOrAny } from 'react-redux'
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 import refreshShifts from '../helpers/refreshShifts';
@@ -8,7 +8,7 @@ import moment from 'moment';
 import Post from '../helpers/posts'
 const EditMode = () => {
   return useSelector(
-    (state) => ({
+    (state: RootStateOrAny) => ({
       editMode: state.addDayMode,
     }),
     shallowEqual
@@ -19,7 +19,7 @@ const AddDayModal = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const [dayshift, setDayShift] = useState(new Date());
   const dispatch = useDispatch()
-  const onChange = (event: any, data: { value: SetStateAction<null>; }) => {
+  const onChange = (event: any, data: any) => {
     setDayShift(data.value)
   };
   return (

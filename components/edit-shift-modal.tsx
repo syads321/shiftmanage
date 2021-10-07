@@ -1,10 +1,10 @@
 import React, { useRef, SyntheticEvent, useState } from 'react'
 import { Button, Modal, Form } from 'semantic-ui-react'
-import { useSelector, shallowEqual, useDispatch } from 'react-redux'
+import { useSelector, shallowEqual, useDispatch, RootStateOrAny } from 'react-redux'
 import Post from '../helpers/posts'
 const EditMode = () => {
     return useSelector(
-        (state) => ({
+        (state: RootStateOrAny) => ({
             editMode: state.editShiftMode,
             item: state.item,
             shiftaddmode: state.shiftaddmode
