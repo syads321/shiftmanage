@@ -1,4 +1,4 @@
-export default async function FetchPost(url = '', data = {}) {
+export default async function fetchPost(url = '', data = {}) {
     // Default options are marked with *
     const response = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc.

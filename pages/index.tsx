@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import DayShift from '../interfaces/day-shift'
-import FetchtPost from '../helpers/fetchPost'
+import FetchtPost from '../helpers/fetch-post'
 import { useDispatch } from 'react-redux'
 import ShiftBoard from '../components/shift-board'
 import { Button } from 'semantic-ui-react'
