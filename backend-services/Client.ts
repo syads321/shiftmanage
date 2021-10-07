@@ -7,7 +7,7 @@ export default () => {
         database: process.env.DB_NAME,
         password: process.env.DB_PASS,
         port: process.env.DB_PORT,
-        ssl: process.env.DB_SSL === 'true',
+        ssl: { rejectUnauthorized: false },
         idleTimeoutMillis: 0,
         connectionTimeoutMillis: 0,
     })
